@@ -6,6 +6,7 @@ public class Perfil {
 	private String nomPerfil;
 	private String descripcion;
 	private boolean activo;
+	
 	public Integer getId() {
 		return id;
 	}
