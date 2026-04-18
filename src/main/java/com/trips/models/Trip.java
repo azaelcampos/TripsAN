@@ -7,6 +7,52 @@ public class Trip {
 	private Integer id;
 	private String nombre;
 	private String descripcion;
+	private int calificacion;
+	private String imagen;
+	private String detalles;
+	private boolean activo;
+	private Integer idCategoria;
+	
+	public int getCalificacion() {
+		return calificacion;
+	}
+
+	public void setCalificacion(int calificacion) {
+		this.calificacion = calificacion;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public String getDetalles() {
+		return detalles;
+	}
+
+	public void setDetalles(String detalles) {
+		this.detalles = detalles;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public Integer getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(Integer idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
 	private Date fecha;
 	private Double costo;
 	private Integer destacado;
