@@ -27,28 +27,28 @@ public class HomeController {
 		return "homre";
 	}
 	
-	@GetMapping("/home")
-	public String mostrarHome (Model model) {
-		
-		model.addAttribute("mensaje", "Bienvenidos a la aplicacion");
-		model.addAttribute("mensaje2", "Categorias de productos");
-		model.addAttribute("fecha", new Date());
-		return "home";
+	@GetMapping("/homle")
+	public String mostrarHomle (Model model) {
+	    
+	    String trip = "Rapel en Volcatenango";
+	    Date fechaPublicacion = new Date();
+	    double costo = 5.0;
+	    boolean vigente = true;
+	    
+	    model.addAttribute("trip", trip);
+	    model.addAttribute("fechaPublicacion", fechaPublicacion);
+	    model.addAttribute("costo", costo);
+	    model.addAttribute("vigente", vigente);
+	    
+	    return "homle";
 	}
 	
-	@GetMapping("/homle")
-	public String mostrarHomle(Model model) {
+	@GetMapping("/home")
+	public String mostrarHome(Model model) {
 		
-		String trip = "Rapel en el Volcan";
-		Date fechaPublicacion = new Date();
-		double costo = 5.0;
-		boolean vigente = true;
-		
-		model.addAttribute("trip", trip);
-		model.addAttribute("fechaPublicacion", fechaPublicacion);
-		model.addAttribute("costo", costo);
-		model.addAttribute("vigente", vigente);
-		return "homle";
+		List<Trip> lista = tripServices.buscarTodo();
+		model.addAttribute("trips", lista);
+		return "home";
 	}
 	
 	@GetMapping("/listado")
@@ -83,6 +83,15 @@ public class HomeController {
 		List<Trip> lista = tripServices.buscarTodo();	
 		model.addAttribute("trips", lista);
 		return "tabla";
+	}
+	
+	@GetMapping("/hompe")
+	public String mostrarHompe (Model model) {
+		
+		model.addAttribute("mensaje", "Bienvenidos a Trips");
+		model.addAttribute("mensaje2", "Categorias de productos");
+		model.addAttribute("fecha", new Date());
+		return "hompe";
 	}
 
 }

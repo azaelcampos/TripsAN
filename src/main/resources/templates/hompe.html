@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AppTrips</title>
+</head>
+<body>
+    <h1 th:text="${mensaje}"></h1>
+    <p th:text="${mensaje2}"></p>
+    <hr>
+    <p>Fecha de acceso: <span th:text="${#dates.format(fecha, 'dd/MM/yyyy HH:mm:ss')}"></span></p>
+    <p>Dato de la fecha: <span th:text="${fecha}"></span></p>
+</body>
+</html>
