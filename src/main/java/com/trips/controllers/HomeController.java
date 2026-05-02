@@ -88,7 +88,7 @@ public class HomeController {
 	@GetMapping("/hompe")
 	public String mostrarHompe (Model model) {
 		
-		model.addAttribute("mensaje", "Bienvenidos a Trips");
+		model.addAttribute("mensaje", "Bienvenidos a la aplicacion");
 		model.addAttribute("mensaje2", "Categorias de productos");
 		model.addAttribute("fecha", new Date());
 		return "hompe";
