@@ -21,8 +21,9 @@ public class TripController {
 	
 	@GetMapping("/view/{id}")
 	public String verDetalle(@PathVariable("id") int idTrip, Model model) {
-	    System.out.println("IdTrip es: " + idTrip);
-	    model.addAttribute ("idTrip" , idTrip);
+		Trip trip = servicesTrip.buscarPorId(idTrip);
+	    System.err.println("Trip: " + trip);
+	    model.addAttribute ("trip" , trip);
 	    
 	    return "trips/detalle";
 	    }

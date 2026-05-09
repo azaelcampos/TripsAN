@@ -9,7 +9,7 @@
 
     <title>TripApp | Aplicación para publicar Ofertas de Vacil en El Salvador.</title>
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="bootstrap/css/jumbotron.css" rel="stylesheet">
     <link href="bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
@@ -76,7 +76,7 @@
             <h6 class="card-title"><strong>Categoría: </strong> <span>Aventura</span></h6>
             <h6 class="card-title"><strong>Publicado: </strong> <span th:text=${trip.fecha}></span></h6>                
             <p th:text=${trip.descripcion}></p>
-            <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a></p>         
+            <p><a class="btn btn-secondary" th:href="@{/trips/view/{id} (id=${trip.id})}"role="button">Ver detalles &raquo;</a></p>         
           </div>
         </div>     
 		  <hr>	

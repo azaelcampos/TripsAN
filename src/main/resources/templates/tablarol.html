@@ -4,33 +4,154 @@
     <meta charset="UTF-8">
     <title>Trips Listado de Roles</title>
     <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid black; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
+        :root {
+            --bg: #0b1020;
+            --card: #0f172a;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --border: #334155;
+            --header: #f8fafc;
+            --accent: #22d3ee;
+            --accent-soft: #0ea5e9;
+            --yes: #22c55e;
+            --no: #f43f5e;
+            --table-header: #111827;
+            --row-hover: #1f2937;
+            --outline: #38bdf8;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: radial-gradient(1200px 600px at 10% 0%, #111827 0%, #0b1020 55%, #070b16 100%);
+            color: var(--text);
+        }
+        .page {
+            max-width: 1100px;
+            margin: 32px auto;
+            padding: 0 16px;
+        }
+        .header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--header);
+            margin: 0;
+            text-shadow: 0 0 10px rgba(34, 211, 238, 0.35);
+        }
+        .subtitle {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+        }
+        .card {
+            background: linear-gradient(180deg, #0f172a 0%, #0b1324 100%);
+            border: 2px solid var(--outline);
+            border-radius: 14px;
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2), 0 18px 40px rgba(7, 10, 20, 0.55);
+            overflow: hidden;
+        }
+        .table-wrap { overflow-x: auto; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        thead th {
+            text-align: left;
+            font-size: 12px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: #7dd3fc;
+            background: var(--table-header);
+            padding: 14px 16px;
+            border-bottom: 2px solid #1f2937;
+        }
+        tbody td {
+            padding: 14px 16px;
+            border-bottom: 2px solid #1f2937;
+            vertical-align: middle;
+        }
+        tbody tr:nth-child(even) { background: rgba(15, 23, 42, 0.65); }
+        tbody tr:hover { background: var(--row-hover); }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 2px solid transparent;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+        }
+        .badge.yes { color: #052e16; background: #22c55e; border-color: #86efac; }
+        .badge.no { color: #4c0519; background: #fb7185; border-color: #fda4af; }
+        .id-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 30px;
+            padding: 0 10px;
+            border-radius: 8px;
+            background: #0ea5e9;
+            color: #061225;
+            font-weight: 800;
+            font-size: 13px;
+            border: 2px solid #7dd3fc;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.35);
+        }
+        .desc {
+            color: var(--text);
+            max-width: 420px;
+        }
+        .muted { color: var(--muted); }
+        @media (max-width: 720px) {
+            .title { font-size: 20px; }
+            .subtitle { font-size: 12px; }
+        }
     </style>
 </head>
 <body>
-    <h1>Roles de Tienda Electrónica</h1>
+    <div class="page">
+        <div class="header">
+            <h1 class="title">Roles de Tienda Electrónica</h1>
+            <p class="subtitle">Listado y estado de los roles</p>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NomRol</th>
-                <th>Descripcion</th>
-                <th>Activo</th>
-                <th>FechaCreación</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="rol : ${roles}">
-                <td th:text="${rol.id}"></td>
-                <td th:text="${rol.nomRol}"></td>
-                <td th:text="${rol.descripcion}"></td>
-                <td th:text="${rol.activo ? 'Sí' : 'No'}"></td>
-                <td th:text="${#dates.format(rol.fechaCreacion, 'dd/MM/yyyy')}"></td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="card">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>NomRol</th>
+                            <th>Descripcion</th>
+                            <th>Activo</th>
+                            <th>FechaCreación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="rol : ${roles}">
+                            <td><span class="id-chip" th:text="${rol.id}"></span></td>
+                            <td th:text="${rol.nomRol}"></td>
+                            <td class="desc" th:text="${rol.descripcion}"></td>
+                            <td>
+                                <span class="badge yes" th:if="${rol.activo}">Sí</span>
+                                <span class="badge no" th:unless="${rol.activo}">No</span>
+                            </td>
+                            <td class="muted" th:text="${#dates.format(rol.fechaCreacion, 'dd/MM/yyyy')}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
