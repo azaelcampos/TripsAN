@@ -80,5 +80,10 @@ public class TripServiceImpl implements ITripServices {
 				return trip;
 		return null;
 	}
+	
+	@Override
+	public void guardar(Trip trip) {
+		lista.add(trip);
+	}
 
 }
