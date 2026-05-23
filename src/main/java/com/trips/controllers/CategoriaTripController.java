@@ -13,9 +13,9 @@ public class CategoriaTripController {
 	
 	//@RequestMapping(value = "/index", method = RequestMethod.GET)
 	@GetMapping("/index")
-	public String mostrarIndex(Model model) {
+	public String mostrarIndex() {
 		
-		return "categoriasTrip/listCategoria";
+		return "categoriasTrip/listCategorias";
 		
 	}
 	
@@ -32,7 +32,7 @@ public class CategoriaTripController {
 	        System.out.println("Nombre Categoria: " + nombre);
 	        System.out.println("Descripcion: " + descripcion);
 			
-	        return "categoriasTrip/listCategoria"; 
+	        return "categoriasTrip/listCategorias"; 
 		}
 
 }
